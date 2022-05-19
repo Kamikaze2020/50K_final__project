@@ -1,0 +1,33 @@
+@import "reset";
+@import "extends";
+@import "breakpoints";
+@import "variables";
+@import "../assets/fonts";
+
+*{
+  transition-duration: .3s;
+}
+
+body {
+  font-family: "sfPro", sans-serif;
+  background-color: $bg-alice-blue !important;
+
+  &.dark {
+    background-color: $dark-gunmetal !important;;
+  }
+}
+
+.test-title {
+  width: 100%;
+  padding-top: 1em;
+  text-align: center;
+}
+
+.container {
+  @extend %container;
+
+  @include respond-max($xs) {
+    min-width: 300px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,8 @@
+@import 'src/styles/breakpoints';
+
+.app {
+  display: flex;
+  @include respond-max($xlg) {
+    display: block;
+  }
+}

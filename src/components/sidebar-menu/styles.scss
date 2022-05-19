@@ -1,0 +1,189 @@
+@import 'src/styles/variables';
+@import 'src/styles/breakpoints';
+
+$path-icon: '~/src/assets/icon/';
+
+.dark {
+  .sidebar {
+    background-color: $yankees-blue !important;
+  }
+
+  .user {
+    &__name {
+      color: #fff;
+    }
+  }
+}
+
+.sidebar {
+  width: 460px;
+  padding: 60px 40px;
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  display: none;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  border-bottom: 1px solid $color-azureish-white;
+  padding-bottom: 30px;
+
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+
+    span {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+}
+
+
+.sidebar__nav {
+  color: $color-steel-teal;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  padding: 40px 0;
+
+  a {
+    font-weight: 600;
+    padding: 20px 35px;
+
+    &:hover {
+      color: #fff;
+      background-color: $color-blue;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: auto;
+
+
+  button {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  .make-appointment {
+    background-color: $color-radical-red;
+    color: #fff;
+    border: none;
+  }
+
+  .bill {
+    background-color: $color-french-sky-blue;
+    color: $color-dark-gunmetal;
+  }
+}
+
+.modalStyle {
+  .ant-modal-content {
+    padding: 2em;
+    border-radius: 30px;
+  }
+
+  .ant-modal-title {
+    color: $color-blue;
+    font-size: 34px;
+    font-weight: 600;
+  }
+
+  .ant-modal-footer {
+    padding-top: 2em;
+    text-align: left;
+  }
+}
+
+@include respond-to(xlg, lg) {
+  .sidebar {
+    height: auto;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .user {
+      border-bottom: none;
+      padding: 0;
+      align-items: center;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    &__nav {
+      flex-direction: row;
+      order: 2;
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+}
+
+@include respond-max($md) {
+  .sidebar {
+    position: absolute;
+    z-index: 5;
+    padding: 40px 20px 0;
+    transform: translateX(-1000px);
+  }
+
+  .menu__active {
+    transform: translateX(0);
+    width: 100%;
+    height: 100%;
+  }
+
+  .menu {
+    display: flex;
+    padding: 1em 0 0 20px;
+    font-weight: 600;
+    font-size: 30px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: $color-steel-teal;
+    color: transparent;
+
+    button {
+      width: 30px;
+      height: 50px;
+      margin-right: 20px;
+      background-image: url($path-icon + "menu.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+}
+

@@ -1,0 +1,65 @@
+@import 'src/styles/variables';
+
+$path-icon: '~/src/assets/icon/';
+
+.theme {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  p {
+    font-size: 16px;
+    color: $color-steel-teal;
+    font-weight: 600;
+    padding-left: 40px;
+    background-image: url($path-icon + "dark.svg");
+    background-repeat: no-repeat;
+    margin: 0;
+
+    &.clicked {
+      background-image: url($path-icon + "ligth.svg") !important;
+    }
+  }
+
+  input {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+
+    &:checked + label {
+      background: rgba(241, 241, 241, .1);
+    }
+
+    &:checked + label:after {
+      left: calc(100% - 5px);
+      transform: translateX(-100%);
+    }
+  }
+
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 60px;
+    height: 30px;
+    background: #E5EFFF;
+    display: block;
+    border-radius: 30px;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 20px;
+      height: 20px;
+      background: $color-blue;
+      border-radius: 90px;
+      transition: 0.3s;
+    }
+
+    &:active:after {
+      width: 30px;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import 'src/styles/variables';
+@import 'src/styles/breakpoints';
+
+$path-icon: '~/src/assets/icon/';
+
+.dark {
+  .table-list {
+    input {
+      background-color: #6675AE;
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+  }
+
+  table {
+    tr:hover > td {
+      background-color: #5D7993 !important;
+    }
+  }
+
+  .ant-table-content,
+  table,
+  .ant-table-thead > tr > th {
+    color: #fff;
+    background-color: $yankees-blue !important;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px solid $color-steel-teal;
+  }
+}
+
+.ant-table-body {
+  overflow-x: auto !important
+}
+
+.table-list {
+  padding: 3em 1em;
+  width: 100%;
+  height: 100%;
+
+  table {
+    border-radius: 5px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    padding: 3em 10px;
+
+    h2 {
+      font-size: 28px;
+      color: $color-blue;
+      font-weight: 600;
+    }
+
+    label {
+      padding-right: 3em;
+      width: 50%;
+      background-image: url($path-icon + "search.svg");
+      background-repeat: no-repeat;
+      background-position: right;
+
+    }
+
+    input {
+      border: 1px solid $color-azureish-white;
+      border-radius: 5px;
+      outline: none;
+      padding: 15px;
+      width: 100%;
+
+      &::placeholder {
+        color: $color-dark-gunmetal;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+@include respond-max($xlg){
+  .table-list{
+    padding-top: 0;
+  }
+}
