@@ -1,29 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
 
 import './styles.scss';
 import {SidebarMenu} from "../sidebar-menu";
 import {TableList} from "../table-list";
 import {Doctors, NotFound, Patient, Profile, Services} from "../pages";
+import {addClients, fetchClients} from "../../store/asyncActions/client";
 
 const App = () => {
-  const [dataSource, setDataSource] = useState([]);
+  // const [dataSource, setDataSource] = useState([]);
   const [value, setValue] = useState('');
 
-  const apiEndPoint = 'http://localhost:5000/users';
+  const dispatch = useDispatch();
+  const clients = useSelector(state => state.clients.clients);
 
   useEffect(() => {
-    axios.get(apiEndPoint)
-      .then(({data}) => {
-        setDataSource(data)
-      })
+    dispatch(fetchClients(clients))
   }, [])
 
 
   const addItem = async (text) => {
     const newItem = {
-      key: dataSource.length + 1,
+      key: clients.length + 1,
       id: new Date().getUTCMilliseconds(),
       name: text.name,
       birth: text.birth,
@@ -32,14 +32,16 @@ const App = () => {
       status: "Ожидает"
     }
 
-    await axios.post('http://localhost:5000/users', newItem)
-    setDataSource([...dataSource, newItem])
+    dispatch(addClients(newItem))
+
+    // await axios.post('http://localhost:5000/users', newItem)
+    // setDataSource([...dataSource, newItem])
 
   }
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:5000/users/${id}`)
-    setDataSource(dataSource.filter((item) => item.id !== id))
+    // setDataSource(dataSource.filter((item) => item.id !== id))
   }
 
 
@@ -47,12 +49,12 @@ const App = () => {
     const currValue = e.target.value.toLowerCase();
     if (currValue.length === 0) {
       console.log('empty!!!')
-      return setDataSource(dataSource), setValue('')
+      // return setDataSource(dataSource), setValue('')
     }
 
-    setValue(currValue);
-    const filteredData = dataSource.filter(entry => entry.name.toLowerCase().includes(currValue))
-    setDataSource(filteredData)
+    // setValue(currValue);
+    // const filteredData = dataSource.filter(entry => entry.name.toLowerCase().includes(currValue))
+    // setDataSource(filteredData)
   }
 
   return (
@@ -61,7 +63,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={
           <TableList
-            dataSource={dataSource}
+            clients={clients}
             value={value}
             onSearch={onSearch}
             handleDelete={handleDelete}

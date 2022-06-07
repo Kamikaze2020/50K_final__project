@@ -2,8 +2,13 @@ import React from 'react';
 import {Input, Table} from 'antd';
 
 import './styles.scss';
+import {useDispatch} from "react-redux";
+import {removeClients} from "../../store/asyncActions/client";
 
-const TableList = ({dataSource, onSearch, value, handleDelete}) => {
+const TableList = ({clients, onSearch, value, handleDelete}) => {
+  const dispatch = useDispatch();
+
+  console.log(clients)
 
   const columns = [
     {
@@ -37,7 +42,7 @@ const TableList = ({dataSource, onSearch, value, handleDelete}) => {
       key: 'x',
       fixed: 'right',
       render: (_, record) => {
-        return (<a onClick={() => handleDelete(record.id)}>Delete</a>)
+        return (<a onClick={() => dispatch(removeClients(record.id))}>Delete</a>)
       },
     }
 
@@ -54,7 +59,7 @@ const TableList = ({dataSource, onSearch, value, handleDelete}) => {
       <Table
         pagination={false}
         columns={columns}
-        dataSource={dataSource}
+        dataSource={clients}
         scroll={{x: 'max-content'}}
         bordered
       />

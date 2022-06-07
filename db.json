@@ -1,5 +1,5 @@
 {
-  "users": [
+  "clients": [
     {
       "key": 1,
       "id": 1,
@@ -10,21 +10,12 @@
       "status": "отменена"
     },
     {
-      "key": 4,
-      "id": 4,
-      "name": "Jim Red",
-      "birth": "01.09.1989",
-      "phone": "8 999 123 45 67",
-      "meet_data": "15.05.2021",
-      "status": "Ожидает"
-    },
-    {
-      "key": 3,
-      "id": 282,
-      "name": "sasasas",
-      "birth": "16.05.2022",
+      "key": 2,
+      "id": 698,
+      "name": "Oleg Test",
+      "birth": "28.06.2022",
       "phone": "222222",
-      "meet_data": "16.05.2022",
+      "meet_data": "07.06.2022",
       "status": "Ожидает"
     }
   ]
