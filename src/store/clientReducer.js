@@ -20,5 +20,5 @@ export const clientReducer = (state = initialState, {type, payload}) => {
 };
 
 export const getClientAction = (payload) => ({type: GET_CLIENT, payload});
-export const addClientAction = (payload) => ({type: ADD_CLIENT, payload:payload.data});
+export const addClientAction = (payload) => ({type: ADD_CLIENT, payload: payload.data});
 export const removeClientAction = (payload) => ({type: REMOVE_CLIENT, payload})

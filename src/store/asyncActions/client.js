@@ -3,11 +3,16 @@ import {addClientAction, getClientAction, removeClientAction} from "../clientRed
 
 const apiEndPoint = 'http://localhost:5000/clients';
 
+// export const searchClient = (text) => {
+//   return dispatch => {
+//     dispatch(searchClientAction(text))
+//   }
+// }
+
 export const fetchClients = () => {
   return dispatch => {
     axios.get(apiEndPoint)
       .then(({data}) => {
-        console.log('FETCH:', data)
         dispatch(getClientAction(data))
       })
   }
@@ -20,7 +25,8 @@ export const addClients = (data) => {
 }
 
 export const removeClients = (id) => {
-  return async (dispatch) => {
-    await axios.delete(`${apiEndPoint}/${id}`).then(res=>dispatch(removeClientAction(res)))
+  return  (dispatch) => {
+     return axios.delete(`${apiEndPoint}/${id}`)
+       .then(() => dispatch(removeClientAction(id)))
   }
 }

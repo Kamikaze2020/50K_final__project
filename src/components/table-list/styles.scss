@@ -4,6 +4,16 @@
 $path-icon: '~/src/assets/icon/';
 
 .dark {
+  .test-title h1 {
+    color: $color-azureish-white;
+  }
+
+  .clients {
+    &__count {
+      color: $color-french-sky-blue;
+    }
+  }
+
   .table-list {
     input {
       background-color: #6675AE;
@@ -22,14 +32,23 @@ $path-icon: '~/src/assets/icon/';
 
   .ant-table-content,
   table,
-  .ant-table-thead > tr > th {
+  .ant-table-cell {
     color: #fff;
-    background-color: $yankees-blue !important;
   }
 
-  .ant-table-thead > tr > th,
+  .ant-table-thead > tr > th{
+    background-color: $dark-gunmetal;
+  }
   .ant-table-tbody > tr > td {
+    background-color: $yankees-blue !important;
     border-bottom: 1px solid $color-steel-teal;
+  }
+}
+
+.clients {
+  &__count {
+    padding-left: 5px;
+    padding-bottom: 1em;
   }
 }
 
@@ -81,8 +100,8 @@ $path-icon: '~/src/assets/icon/';
   }
 }
 
-@include respond-max($xlg){
-  .table-list{
+@include respond-max($xlg) {
+  .table-list {
     padding-top: 0;
   }
 }
