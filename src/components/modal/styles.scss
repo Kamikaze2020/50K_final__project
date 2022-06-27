@@ -1,0 +1,73 @@
+@import 'src/styles/variables';
+@import 'src/styles/breakpoints';
+
+.modal-form {
+  max-width: 500px;
+  margin: 0 auto;
+
+  h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+  }
+
+  p {
+    color: $color-radical-red;
+  }
+
+  p::before {
+    display: inline;
+    content: "* ";
+  }
+
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid $color-steel-teal;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    color: $color-steel-teal;
+    font-size: 14px;
+    font-weight: 200;
+  }
+
+  input[type="submit"]{
+    background: $color-blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  input[type="submit"]:hover {
+    background: $color-french-sky-blue;
+  }
+
+  input[type="submit"]:active{
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+
+  input:disabled {
+    opacity: 0.4;
+  }
+
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+}
+

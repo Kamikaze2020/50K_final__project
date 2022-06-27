@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, DatePicker, Form, Input, Modal} from "antd";
-import {addClients} from "../../store/asyncActions/client";
 import {useDispatch} from "react-redux";
+
+import {addClients} from "../../store/asyncActions/client";
 
 
 const ModalComponent = ({isModalVisible, handleOk, handleCancel}) => {
@@ -58,12 +59,34 @@ const ModalComponent = ({isModalVisible, handleOk, handleCancel}) => {
           <Button form='myForm' type="primary" htmlType="submit" onClick={handleOk}>
             Сохранить и закрыть
           </Button>
-          <Button onClick={()=> form.resetFields()}>Сбросить</Button>
+          <Button onClick={() => form.resetFields()}>Сбросить</Button>
         </Form.Item>
       ]}
     >
-      <Form id='myForm' {...layout} name="nest-messages" form={form} onFinish={onFinish}>
-        <Form.Item name='name' label='Имя пациента'>
+      <Form
+        id='myForm'
+        {...layout}
+        name="nest-messages"
+        form={form}
+        onFinish={onFinish}
+        autoComplete='off'
+      >
+        <Form.Item
+          name='name'
+          label='Имя пациента'
+          rules={[
+            {
+              required: true,
+              message: '* Полное имя пациента'
+            },
+            {whitespace: true},
+            {
+              min:5,
+              message: 'Введите больше 5 символов'
+            }
+          ]}
+          hasFeedback
+        >
           <Input placeholder='ФИО пациента'/>
         </Form.Item>
         <Form.Item name='birth' label="Дата рождения">

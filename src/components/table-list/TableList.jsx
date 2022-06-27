@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Input, Table} from 'antd';
 import {useDispatch} from "react-redux";
+import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
 
 import './styles.scss';
 import {removeClients} from "../../store/asyncActions/client";
@@ -17,7 +18,7 @@ const TableList = ({dataSource}) => {
     },
     {
       title: 'Дата рождения',
-      dataIndex: 'birth',
+      dataIndex: 'dob',
     },
     {
       title: 'Телефон',
@@ -25,7 +26,7 @@ const TableList = ({dataSource}) => {
     },
     {
       title: 'Планируемая дата посещения',
-      dataIndex: 'meet_data',
+      dataIndex: 'meet_date',
       width: 150
     },
     {
@@ -33,7 +34,7 @@ const TableList = ({dataSource}) => {
       dataIndex: 'status',
     },
     {
-      title: 'Action',
+      title: 'Действия',
       dataIndex: '',
       key: 'x',
       fixed: 'right',

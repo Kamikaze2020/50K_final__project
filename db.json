@@ -1,75 +1,30 @@
 {
   "clients": [
     {
-      "key": 486,
-      "id": 486,
-      "name": "Oleg Test2",
-      "birth": "08.06.2022",
-      "phone": "111112",
-      "meet_data": "08.06.2022",
+      "key": 667,
+      "id": 667,
+      "name": "Anton Smile",
+      "dob": "21.06.2022",
+      "phone": "+996 (324) 32-44-32",
+      "meet_date": "26.06.2022",
       "status": "Ожидает"
     },
     {
-      "key": 557,
-      "id": 557,
-      "name": "sasasas",
-      "birth": "09.06.2022",
-      "phone": "11111",
-      "meet_data": "09.06.2022",
+      "key": 505,
+      "id": 505,
+      "name": "Nurlan Ergashev",
+      "dob": "03.07.2022",
+      "phone": "+996 (546) 64-56-45",
+      "meet_date": "24.06.2022",
       "status": "Ожидает"
     },
     {
-      "key": 544,
-      "id": 544,
-      "name": "Oleg Test",
-      "birth": "09.06.2022",
-      "phone": "3333",
-      "meet_data": "09.06.2022",
-      "status": "Ожидает"
-    },
-    {
-      "key": 889,
-      "id": 889,
-      "name": "Oleg Test",
-      "birth": "09.06.2022",
-      "phone": "11111",
-      "meet_data": "09.06.2022",
-      "status": "Ожидает"
-    },
-    {
-      "key": 128,
-      "id": 129,
-      "name": "Oleg Test",
-      "birth": "09.06.2022",
-      "phone": "11111",
-      "meet_data": "09.06.2022",
-      "status": "Ожидает"
-    },
-    {
-      "key": 536,
-      "id": 536,
-      "name": "Oleg",
-      "birth": "09.06.2022",
-      "phone": "2222223333333333",
-      "meet_data": "09.06.2022",
-      "status": "Ожидает"
-    },
-    {
-      "key": 642,
-      "id": 642,
-      "name": "Oleg Test",
-      "birth": "09.06.2022",
-      "phone": "11111",
-      "meet_data": "23.06.2022",
-      "status": "Ожидает"
-    },
-    {
-      "key": 348,
-      "id": 348,
-      "name": "Oleg Test2",
-      "birth": "09.06.2022",
-      "phone": "222222",
-      "meet_data": "09.06.2022",
+      "key": 770,
+      "id": 770,
+      "name": "Anton Smile",
+      "dob": "02.07.2022",
+      "phone": "+996 (232) 32-13-21",
+      "meet_date": "25.06.2022",
       "status": "Ожидает"
     }
   ]

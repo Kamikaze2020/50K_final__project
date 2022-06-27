@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 
 import './styles.scss';
 import {avatarImg} from 'assets';
-import {ModalComponent} from "../modal";
-import {DarkMode} from "../dark-mode";
+import {ModalComponent, ModalForm} from "../modal";
+ import {DarkMode} from "../dark-mode";
 
 const SidebarMenu = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -51,9 +51,10 @@ const SidebarMenu = () => {
         <div className="btns">
           <Button className='make-appointment' onClick={showModal}> Записать на приём</Button>
         </div>
-
-        <ModalComponent handleOk={handleOk} isModalVisible={isModalVisible}
+        <ModalForm handleOk={handleOk} isModalVisible={isModalVisible}
                         handleCancel={handleCancel}/>
+        {/*<ModalComponent handleOk={handleOk} isModalVisible={isModalVisible}*/}
+        {/*                handleCancel={handleCancel}/>*/}
         <DarkMode/>
       </div>
     </>
