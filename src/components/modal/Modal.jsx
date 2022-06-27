@@ -1,8 +1,28 @@
 import React from 'react';
 import {Button, DatePicker, Form, Input, Modal} from "antd";
+import {useDispatch} from "react-redux";
+
+import {addClients} from "../../store/asyncActions/client";
 
 
-const ModalComponent = ({isModalVisible, handleOk, handleCancel,addItem}) => {
+const ModalComponent = ({isModalVisible, handleOk, handleCancel}) => {
+  const dispatch = useDispatch();
+  const [form] = Form.useForm();
+
+
+  const addItem = (text) => {
+    const newItem = {
+      key: new Date().getUTCMilliseconds(),
+      id: new Date().getUTCMilliseconds(),
+      name: text.name,
+      birth: text.birth,
+      phone: text.phone,
+      meet_data: text.meet_data,
+      status: "Ожидает"
+    }
+
+    dispatch(addClients(newItem))
+  }
 
 
   let layout = {
@@ -11,17 +31,6 @@ const ModalComponent = ({isModalVisible, handleOk, handleCancel,addItem}) => {
     },
     wrapperCol: {
       span: 16,
-    },
-  };
-
-  const validateMessages = {
-    required: '${label} is required!',
-    types: {
-      email: '${label} is not a valid email!',
-      number: '${label} is not a valid number!',
-    },
-    number: {
-      range: '${label} must be between ${min} and ${max}',
     },
   };
 
@@ -46,26 +55,48 @@ const ModalComponent = ({isModalVisible, handleOk, handleCancel,addItem}) => {
       cancelButtonProps={{style: {display: 'none'}}}
       width={800}
       footer={[
-        <Form.Item  key="submit" wrapperCol={{...layout.wrapperCol, offset: 8}}>
+        <Form.Item key="submit" wrapperCol={{...layout.wrapperCol, offset: 8}}>
           <Button form='myForm' type="primary" htmlType="submit" onClick={handleOk}>
             Сохранить и закрыть
           </Button>
+          <Button onClick={() => form.resetFields()}>Сбросить</Button>
         </Form.Item>
       ]}
     >
-      <Form id='myForm' {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}
+      <Form
+        id='myForm'
+        {...layout}
+        name="nest-messages"
+        form={form}
+        onFinish={onFinish}
+        autoComplete='off'
       >
-        <Form.Item name='name' label='Имя пациента' rules={[{required: true}]}>
+        <Form.Item
+          name='name'
+          label='Имя пациента'
+          rules={[
+            {
+              required: true,
+              message: '* Полное имя пациента'
+            },
+            {whitespace: true},
+            {
+              min:5,
+              message: 'Введите больше 5 символов'
+            }
+          ]}
+          hasFeedback
+        >
           <Input placeholder='ФИО пациента'/>
         </Form.Item>
-        <Form.Item name='birth' label="Дата рождения" >
+        <Form.Item name='birth' label="Дата рождения">
           <DatePicker/>
         </Form.Item>
         <Form.Item
           name='phone'
           label="Номер телефона"
         >
-         <Input/>
+          <Input/>
         </Form.Item>
         <Form.Item name='meet_data' label="Дата">
           <DatePicker/>
