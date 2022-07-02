@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {Button} from "antd";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 import './styles.scss';
 import {avatarImg} from 'assets';
-import {ModalComponent, ModalForm} from "../modal";
- import {DarkMode} from "../dark-mode";
+import {ModalForm} from "../modal";
+import {DarkMode} from "../dark-mode";
 
 const SidebarMenu = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [active, setActive] = useState(false);
-
+  const location = useLocation();
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -49,12 +49,13 @@ const SidebarMenu = () => {
           <Link onClick={() => showMenu()} to={'/profile'}>Профиль</Link>
         </div>
         <div className="btns">
-          <Button className='make-appointment' onClick={showModal}> Записать на приём</Button>
+          {
+            location.pathname === '/' ?
+            <Button className='make-appointment' onClick={showModal}> Записать на приём</Button> : null
+          }
         </div>
         <ModalForm handleOk={handleOk} isModalVisible={isModalVisible}
-                        handleCancel={handleCancel}/>
-        {/*<ModalComponent handleOk={handleOk} isModalVisible={isModalVisible}*/}
-        {/*                handleCancel={handleCancel}/>*/}
+                   handleCancel={handleCancel}/>
         <DarkMode/>
       </div>
     </>

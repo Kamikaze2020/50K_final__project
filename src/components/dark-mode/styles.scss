@@ -8,7 +8,7 @@ $path-icon: '~/src/assets/icon/';
   justify-content: space-between;
   cursor: pointer;
 
-  @include respond-max($md){
+  @include respond-max($md) {
     justify-content: center;
   }
 

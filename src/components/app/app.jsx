@@ -6,7 +6,7 @@ import './styles.scss';
 import {SidebarMenu} from "../sidebar-menu";
 import {TableList} from "../table-list";
 import {Doctors, NotFound, Patient, Profile, Services} from "../pages";
-import {fetchClients} from "../../store/asyncActions/client";
+import {fetchClients} from "../../store/Actions/clientActions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,15 +23,15 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={
           <TableList
-            dataSource={clients}
+            data={clients}
           />
         }
         />
-        <Route path={'/doctors'} element={<Doctors/>}/>
-        <Route path={'/patient'} element={<Patient/>}/>
-        <Route path={'/services'} element={<Services/>}/>
-        <Route path={'/profile'} element={<Profile/>}/>
-        <Route path={'*'} element={<NotFound/>}/>
+        <Route path='/doctors' element={<Doctors/>}/>
+        <Route path='/patient' element={<Patient/>}/>
+        <Route path='/services' element={<Services/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </div>
   );

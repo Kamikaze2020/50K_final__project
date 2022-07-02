@@ -105,3 +105,10 @@ $path-icon: '~/src/assets/icon/';
     padding-top: 0;
   }
 }
+
+.ant-modal-body{
+  .ant-input{
+    margin-bottom: 1em;
+    padding: 15px;
+  }
+}

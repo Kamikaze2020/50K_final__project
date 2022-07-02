@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, DatePicker, Form, Input, Modal} from "antd";
 import {useDispatch} from "react-redux";
 
-import {addClients} from "../../store/asyncActions/client";
+import {addClients} from "../../store/Actions/clientActions";
 
 
 const ModalComponent = ({isModalVisible, handleOk, handleCancel}) => {

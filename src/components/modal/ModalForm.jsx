@@ -1,11 +1,11 @@
 import React from 'react';
 import {Modal} from "antd";
-import MaskedInput from 'react-input-mask'
 import {useDispatch} from "react-redux";
 
-import {useForm, Controller} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 import './styles.scss'
-import {addClients} from "../../store/asyncActions/client";
+import {addClients} from "../../store/Actions/clientActions";
+import MaskedInput from "react-input-mask";
 
 const ModalForm = ({isModalVisible, handleOk, handleCancel}) => {
   const dispatch = useDispatch();
@@ -101,10 +101,7 @@ const ModalForm = ({isModalVisible, handleOk, handleCancel}) => {
             name="phone"
             defaultValue=''
             control={control}
-            rules={{
-              required: true,
-            }
-            }
+            rules={{required: true}}
             render={({field}) => (
               <MaskedInput
                 mask="+\9\96 (999) 99-99-99"

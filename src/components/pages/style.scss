@@ -1,0 +1,16 @@
+.test-title {
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.dark{
+  .ant-result-404 {
+    .ant-result-title,
+    .ant-result-subtitle{
+      color: white !important;
+    }
+  }
+}

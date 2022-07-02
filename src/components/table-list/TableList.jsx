@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
-import {Input, Table} from 'antd';
+import {Input, Modal, Table} from 'antd';
 import {useDispatch} from "react-redux";
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import {DeleteOutlined} from '@ant-design/icons';
 
 import './styles.scss';
-import {removeClients} from "../../store/asyncActions/client";
+import {removeClients} from "../../store/Actions/clientActions";
 
-const TableList = ({dataSource}) => {
+
+const TableList = ({data}) => {
   const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState('');
+
 
   const columns = [
     {
@@ -35,26 +37,36 @@ const TableList = ({dataSource}) => {
     },
     {
       title: 'Действия',
-      dataIndex: '',
-      key: 'x',
-      fixed: 'right',
-      render: (_, record) => {
-        return (<a onClick={() => dispatch(removeClients(record.id))}>Delete</a>)
-      },
+      render: (record) => {
+        return <DeleteOutlined
+            onClick={() => onRemoveClient(record)}
+            style={({color: 'red', marginLeft: 18})}
+          />
+      }
     }
   ];
 
   const onSearch = () => {
-    return dataSource.filter((val) => {
+    return data.filter((val) => {
       if (searchTerm === '') {
         return val
       } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
         return val
       }
     })
+  };
+
+  const onRemoveClient = (record) => {
+    Modal.confirm({
+      title: 'Вы уверенны, вы точно хотите удалить этого клиента?',
+      okText: 'Да',
+      cancelText: 'Нет',
+      okType: 'danger',
+      onOk: () => {
+        dispatch(removeClients(record.id))
+      }
+    })
   }
-
-
 
   return (
     <div className='table-list'>
@@ -65,7 +77,7 @@ const TableList = ({dataSource}) => {
                  onChange={e => setSearchTerm(e.target.value.toLowerCase())}/>
         </label>
       </div>
-      <div className='clients__count'>Количество клиентов: <b>{dataSource.length}</b></div>
+      <div className='clients__count'>Количество клиентов: <b>{data.length}</b></div>
       <Table
         pagination={false}
         columns={columns}

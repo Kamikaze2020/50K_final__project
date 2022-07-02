@@ -102,12 +102,12 @@ const Patient = () => {
 
   return (
     <div className={'test-title'}>
-      <h1>Пациент</h1>
+      <h1>Пациенты</h1>
       <Button onClick={onAddStudent}>Add a new Student</Button>
       <Table
         columns={columns}
         dataSource={dataSource}
-      > </Table>
+      />
       <Modal
         title='Edit Student'
         visible={isEditing}
